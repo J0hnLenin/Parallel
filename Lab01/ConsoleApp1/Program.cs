@@ -1,53 +1,77 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices.Marshalling;
+
+delegate void MethodDelegate(int[,] a, int N);
 
 class Program
 {
     static void Main()
     {
-        Random random = new Random();
+        int M = 1000;
+        int N = 6000;
+        int[,] a = new int[N, N];
 
-        for(int arraySize=1000; arraySize<=26000; arraySize+= 5000)
+        TestMethod(a, N, M, Method1);
+        TestMethod(a, N, M, Method2);
+        TestMethod(a, N, M, Method3);
+        TestMethod(a, N, M, Method4);
+
+    }
+
+    static void Method1(int[,] a, int N)
+    {
+        for (int j = 0; j < N; j++)
+            for (int i = 0; i < N; i++)
+                a[j, i] = i / (i + j + 1);
+    }
+    static void Method2(int[,] a, int N)
+    {
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                a[j, i] = i / (i + j + 1);
+    }
+    static void Method3(int[,] a, int N)
+    {
+        for (int i = N-1; i > 0; i--)
+            for (int j = N-1; j > 0; j--)
+                a[j, i] = i / (i + j + 1);
+    }
+    static void Method4(int[,] a, int N)
+    {
+        for (int j = N-1; j > 0; j--)
+            for (int i = N- 1; i > 0; i--)
+                a[j, i] = i / (i + j + 1);
+    }
+
+    static void TestMethod(int[,] a, int N, int M, MethodDelegate method)
+    {
+        double minn = 1000000.0;
+        double maxx = 0.0;
+        double avg = 0.0;
+
+        Stopwatch all_sw = Stopwatch.StartNew();
+
+        for (int k = 0; k < M; k++)
         {
-            double[] a = new double[arraySize];
-            double[] b = new double[arraySize];
+            Stopwatch sw = Stopwatch.StartNew();
 
-            for (int i = 0; i < arraySize; i++)
-            {
-                a[i] = random.Next(1, 1000);
-                b[i] = random.Next(1, 1000);
-            }
+            method.Invoke(a, N);
 
+            sw.Stop();
 
-            double[] array = new double[arraySize];
+            double ans =  sw.ElapsedMilliseconds / 1000.0;
 
-            for (int k = 0; k < 20; k++)
-            {
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                var op = new ParallelOptions();
-                op.MaxDegreeOfParallelism = 16;
-                Parallel.For(0, k, op, threadId =>
-                {
-
-                    for (int i = threadId; i < arraySize; i += k)
-                    {
-                        double summ = 0;
-                        for (int j = 0; j <= i; j++)
-                        {
-                            summ += Math.Pow(a[j], 1.789) + Math.Pow(b[j], 1.789);
-                        }
-                        array[i] = summ;
-
-                    }
-
-                });
-                sw.Stop();
-                Console.WriteLine("{0} {1} {3}", arraySize, k, sw.ElapsedMilliseconds / 1000.0);
-            }
+            if (ans < minn)
+                minn = ans;
+            if (ans > maxx)
+                maxx = ans;
+            if (k % 100 == 0)
+                Console.WriteLine(k);
         }
-        
+        all_sw.Stop();
+        avg = all_sw.ElapsedMilliseconds / 1000.0 / M;
 
+        Console.WriteLine("{0} {1} {2}", minn, maxx, avg);
+        
     }
 }

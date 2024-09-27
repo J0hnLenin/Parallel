@@ -1,9 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sai\\source\\repos\\ConsoleApp1\\",
+  "WorkspaceRootPath": "E:\\Git\\Parallel\\Lab01\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sai\\AppData\\Local\\SourceServer\\e7fd454be131f5d8b644e8bcd3c6dd02bcb8766b5a313c85ee4f5230351a3d77\\src\\libraries\\System.Private.CoreLib\\src\\System\\Text\\ValueStringBuilder.AppendFormat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4238E806-BB17-47F1-AEB0-813089636C2F}|ConsoleApp1\\ConsoleApp1.csproj|e:\\git\\parallel\\lab01\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4238E806-BB17-47F1-AEB0-813089636C2F}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,24 +14,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ValueStringBuilder.AppendFormat.cs",
-              "DocumentMoniker": "C:\\Users\\sai\\AppData\\Local\\SourceServer\\e7fd454be131f5d8b644e8bcd3c6dd02bcb8766b5a313c85ee4f5230351a3d77\\src\\libraries\\System.Private.CoreLib\\src\\System\\Text\\ValueStringBuilder.AppendFormat.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\SourceServer\\e7fd454be131f5d8b644e8bcd3c6dd02bcb8766b5a313c85ee4f5230351a3d77\\src\\libraries\\System.Private.CoreLib\\src\\System\\Text\\ValueStringBuilder.AppendFormat.cs",
-              "ToolTip": "C:\\Users\\sai\\AppData\\Local\\SourceServer\\e7fd454be131f5d8b644e8bcd3c6dd02bcb8766b5a313c85ee4f5230351a3d77\\src\\libraries\\System.Private.CoreLib\\src\\System\\Text\\ValueStringBuilder.AppendFormat.cs [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\SourceServer\\e7fd454be131f5d8b644e8bcd3c6dd02bcb8766b5a313c85ee4f5230351a3d77\\src\\libraries\\System.Private.CoreLib\\src\\System\\Text\\ValueStringBuilder.AppendFormat.cs [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAuwMkAAAATAAAAAQAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Git\\Parallel\\Lab01\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
+              "ToolTip": "E:\\Git\\Parallel\\Lab01\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "ConsoleApp1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-19T10:43:51.962Z",
-              "EditorCaption": " [\u0422\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u0435\u043D\u0438\u0435]"
+              "WhenOpened": "2024-09-27T06:41:26.83Z",
+              "EditorCaption": ""
             }
           ]
         }
