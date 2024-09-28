@@ -5,10 +5,11 @@ using System.Threading;
 
 class Program
 {
-    const int ARRAY_SIZE = 50000;
+    const int ARRAY_SIZE = 5000;
     const int K = 20; // Количество потоков
     const int D = 50; // Длинна диапазона заполнения одного потока
-    const double M = 1000.0;
+    //const int D = ARRAY_SIZE / K; // Длинна диапазона наивное заполнение
+    const double M = 1000.0; // Количество замеров
 
     static double[] A = new double[ARRAY_SIZE];
     static double[] C = new double[ARRAY_SIZE];
@@ -39,6 +40,17 @@ class Program
             }
             B[i] = summ;
         }
+        
+    }
+
+    static void FillArrayNaively(int id)
+    {
+        int l, r;
+        l = id * D;
+        r = l + D;
+        
+        CalculateProduct(l, r);
+        //Console.WriteLine("Поток {0} заполнил диапазон {1} {2}", id, l, r);
         
     }
 
@@ -84,6 +96,7 @@ class Program
             {
                 threads[i].Join();
             }
+
         }
         sw.Stop();
         
