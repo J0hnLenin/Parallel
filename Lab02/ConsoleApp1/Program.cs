@@ -78,17 +78,16 @@ class Program
     {
         int size = A.GetLength(0);
         var result = new int[size, size];
-
-        Parallel.For(0, size, parallelOptions, j =>
+        for (int i = 0; i < size; i++)  
         {
-            for (int i = 0; i < size; i++)
-            {
+
+            Parallel.For(0, size, parallelOptions, j => {
                 for (int k = 0; k < size; k++)
                 {
                     result[i, j] += A[i, k] * B[k, j];
                 }
-            }
-        });
+            });
+        }
 
         return result;
     }

@@ -60,7 +60,7 @@ class Program
         {
             int l, r;
 
-            lock (lockObj)
+            lock (l)
             {
                 if (currentIndex >= ARRAY_SIZE) return;
 

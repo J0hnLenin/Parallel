@@ -7,103 +7,74 @@ class Program
 {
     static void Main()
     {
-        List<int> S = new() { 100, 500, 1500};
-        foreach (int size in S)
+        List<double> E = new() { 0.0001, 0.00001, 0.000001, 0.0000001, 0.00000001 };
+        foreach (double esp in E)
         {
             List<int> T = new() { 1, 2, 4, 8, 12, 16, 20 };
             foreach (int k in T)
             {
-                var parallelOptions = new ParallelOptions
-                {
-                    MaxDegreeOfParallelism = k
-                };
+                double a = 0.0;
+                double b = Math.PI;
 
-                var A = GenerateRandomMatrix(size);
-                var B = GenerateRandomMatrix(size);
+                var sw = Stopwatch.StartNew();
+                double result = Integrate(a, b, esp, k);
+                sw.Stop();
 
-                //PrintMatrix(A);
-                //PrintMatrix(B);
-
-                var sw1 = Stopwatch.StartNew();
-                var resultRows = MultiplyMatricesByRows(A, B, parallelOptions);
-                sw1.Stop();
-                //PrintMatrix(resultRows);
-                Console.WriteLine($"{size} {k} по строкам: {sw1.ElapsedMilliseconds / 1000.0} с");
-
-
-                var sw2 = Stopwatch.StartNew();
-                var resultColumns = MultiplyMatricesByColumns(A, B, parallelOptions);
-                sw2.Stop();
-                //PrintMatrix(resultColumns);
-                Console.WriteLine($"{size} {k} по столбцам: {sw2.ElapsedMilliseconds / 1000.0} с");
+                Console.WriteLine($"{esp} {k} {sw.ElapsedMilliseconds/1000.0}");
+                Console.WriteLine($"Приближённое значение интеграла: {result}");
             }
         }
         Console.ReadLine();
     }
 
-    static int[,] GenerateRandomMatrix(int size)
+    static double f(double x)
     {
-        var random = new Random();
-        var matrix = new int[size, size];
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
-                matrix[i, j] = random.Next(1, 10);
-            }
-        }
-        return matrix;
+        return Math.Sin(x) + Math.Cos(x) + x;
     }
 
-    static int[,] MultiplyMatricesByRows(int[,] A, int[,] B, ParallelOptions parallelOptions)
+    static double Integrate(double a, double b, double esp, int k)
     {
-        int size = A.GetLength(0);
-        var result = new int[size, size];
-
-        Parallel.For(0, size, parallelOptions, i =>
+        var parallelOptions = new ParallelOptions
         {
-            for (int j = 0; j < size; j++)
+            MaxDegreeOfParallelism = k
+        };
+
+        double deltha = (b - a) / (k * 1.0);
+        double sum = 0.0;
+        Parallel.For(0, k, parallelOptions, i =>
+        {
+            double h = deltha;
+            double l = a + i * deltha;
+            double r = l + deltha;
+
+            double prevArea = (deltha / 2) * (f(l) + f(r));
+            int n = 1;
+            double area = 0.0;
+
+            while (true)
             {
-                for (int k = 0; k < size; k++)
+                n *= 2;
+                h /= 2;
+                area = 0.0;
+
+                for (int w = 0; w < n; w++)
                 {
-                    result[i, j] += A[i, k] * B[k, j];
+                    double x = l + w * h;
+                    area += f(x);
                 }
+
+                area = (r - l) * area / n;
+                if (Math.Abs(area - prevArea) < esp)
+                    break;
+
+                prevArea = area;
             }
+            //Console.WriteLine($"{k} {l} {r} {sum} {area}");
+            sum += area;
+
         });
+        return sum;
 
-        return result;
     }
 
-    static int[,] MultiplyMatricesByColumns(int[,] A, int[,] B, ParallelOptions parallelOptions)
-    {
-        int size = A.GetLength(0);
-        var result = new int[size, size];
-
-        Parallel.For(0, size, parallelOptions, j =>
-        {
-            for (int i = 0; i < size; i++)
-            {
-                for (int k = 0; k < size; k++)
-                {
-                    result[i, j] += A[i, k] * B[k, j];
-                }
-            }
-        });
-
-        return result;
-    }
-
-    static void PrintMatrix(int[,] matrix)
-    {
-        int size = matrix.GetLength(0);
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
-                Console.Write($"{matrix[i, j]} ");
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
-    }
 }
