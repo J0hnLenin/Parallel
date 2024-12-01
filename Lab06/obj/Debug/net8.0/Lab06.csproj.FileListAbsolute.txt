@@ -1,0 +1,15 @@
+E:\Git\Parallel\Lab06\bin\Debug\net8.0\Lab06.exe
+E:\Git\Parallel\Lab06\bin\Debug\net8.0\Lab06.deps.json
+E:\Git\Parallel\Lab06\bin\Debug\net8.0\Lab06.runtimeconfig.json
+E:\Git\Parallel\Lab06\bin\Debug\net8.0\Lab06.dll
+E:\Git\Parallel\Lab06\bin\Debug\net8.0\Lab06.pdb
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.AssemblyInfoInputs.cache
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.AssemblyInfo.cs
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.csproj.CoreCompileInputs.cache
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.sourcelink.json
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.dll
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\refint\Lab06.dll
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.pdb
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\Lab06.genruntimeconfig.cache
+E:\Git\Parallel\Lab06\obj\Debug\net8.0\ref\Lab06.dll
