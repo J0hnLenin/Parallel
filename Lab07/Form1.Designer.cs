@@ -74,9 +74,11 @@
             output1.Location = new Point(208, 71);
             output1.Multiline = true;
             output1.Name = "output1";
+            output1.ReadOnly = true;
             output1.ScrollBars = ScrollBars.Vertical;
             output1.Size = new Size(576, 342);
             output1.TabIndex = 2;
+            output1.TextChanged += output1_TextChanged;
             // 
             // input1
             // 
