@@ -37,6 +37,8 @@
             task2Button = new Button();
             pageTask3 = new TabPage();
             task3Button = new Button();
+            output2 = new TextBox();
+            input2 = new TextBox();
             tabControl1.SuspendLayout();
             pageTask1.SuspendLayout();
             pageTask2.SuspendLayout();
@@ -71,7 +73,7 @@
             // 
             // output1
             // 
-            output1.Location = new Point(208, 71);
+            output1.Location = new Point(208, 74);
             output1.Multiline = true;
             output1.Name = "output1";
             output1.ReadOnly = true;
@@ -82,11 +84,12 @@
             // 
             // input1
             // 
-            input1.Location = new Point(8, 71);
+            input1.Location = new Point(8, 74);
             input1.Multiline = true;
             input1.Name = "input1";
             input1.Size = new Size(194, 342);
             input1.TabIndex = 1;
+            input1.TextChanged += input1_TextChanged;
             // 
             // task1Button
             // 
@@ -100,6 +103,8 @@
             // 
             // pageTask2
             // 
+            pageTask2.Controls.Add(output2);
+            pageTask2.Controls.Add(input2);
             pageTask2.Controls.Add(task2Button);
             pageTask2.Location = new Point(4, 30);
             pageTask2.Name = "pageTask2";
@@ -117,6 +122,7 @@
             task2Button.TabIndex = 1;
             task2Button.Text = "Run";
             task2Button.UseVisualStyleBackColor = true;
+            task2Button.Click += task2Button_Click;
             // 
             // pageTask3
             // 
@@ -137,6 +143,24 @@
             task3Button.Text = "Run";
             task3Button.UseVisualStyleBackColor = true;
             // 
+            // output2
+            // 
+            output2.Location = new Point(208, 74);
+            output2.Multiline = true;
+            output2.Name = "output2";
+            output2.ReadOnly = true;
+            output2.ScrollBars = ScrollBars.Vertical;
+            output2.Size = new Size(576, 342);
+            output2.TabIndex = 4;
+            // 
+            // input2
+            // 
+            input2.Location = new Point(8, 74);
+            input2.Multiline = true;
+            input2.Name = "input2";
+            input2.Size = new Size(194, 342);
+            input2.TabIndex = 3;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -148,6 +172,7 @@
             pageTask1.ResumeLayout(false);
             pageTask1.PerformLayout();
             pageTask2.ResumeLayout(false);
+            pageTask2.PerformLayout();
             pageTask3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -163,5 +188,7 @@
         private Button task3Button;
         private TextBox input1;
         private TextBox output1;
+        private TextBox output2;
+        private TextBox input2;
     }
 }

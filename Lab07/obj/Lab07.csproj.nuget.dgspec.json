@@ -44,6 +44,12 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.71, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
